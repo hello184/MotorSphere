@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MotorSphere — The Motor Culture Platform</title>
+
+  <!-- SEO -->
+  <meta name="description" content="MotorSphere is the home for car & motor culture: Reels, Meetups, Maps, and Marketplace—built for enthusiasts." />
+  <meta name="keywords" content="cars, car meets, marketplace, reels, motorsports, events, maps" />
+  <link rel="canonical" href="https://your-free-url.example/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="MotorSphere — The Motor Culture Platform" />
+  <meta property="og:description" content="Reels, Meets, Maps, and Marketplace. One home for car people." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://your-free-url.example/og.jpg" />
+  <meta property="og:url" content="https://your-free-url.example/" />
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { theme: { extend: { colors: { brand: { DEFAULT: '#7C3AED' }}}}} </script>
+
+  <!-- Favicon (optional) -->
+  <link rel="icon" href="/favicon.ico" />
+  <style>
+    /* Subtle noise background */
+    body { background: #0b0b0e; color: #eaeaea; }
+    .card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); }
+    .glass { background: rgba(124, 58, 237, 0.08); border: 1px solid rgba(124, 58, 237, 0.3); }
+    .gradient-text { background: linear-gradient(90deg, #fff, #a78bfa); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  </style>
+</head>
+<body class="antialiased">
+  <!-- Nav -->
+  <header class="sticky top-0 z-50 backdrop-blur bg-black/40 border-b border-white/10">
+    <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="h-8 w-8 rounded-lg bg-brand/80"></div>
+        <span class="font-semibold tracking-wide">MotorSphere</span>
+      </div>
+      <nav class="hidden md:flex items-center gap-6 text-sm text-white/80">
+        <a href="#features" class="hover:text-white">Features</a>
+        <a href="#screens" class="hover:text-white">Screens</a>
+        <a href="#roadmap" class="hover:text-white">Roadmap</a>
+        <a href="#contact" class="hover:text-white">Contact</a>
+      </nav>
+      <a href="#contact" class="hidden sm:inline-block rounded-md bg-brand px-4 py-2 text-sm font-semibold">Investor Contact</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="mx-auto max-w-7xl px-4 py-16 md:py-24">
+    <div class="grid md:grid-cols-2 items-center gap-10">
+      <div>
+        <p class="text-xs uppercase tracking-widest text-white/50 mb-3">The Motor Culture Platform</p>
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+          One home for <span class="gradient-text">Reels, Meets, Maps,</span> & Marketplace
+        </h1>
+        <p class="mt-5 text-white/70">
+          MotorSphere brings the entire motor world together—create and watch reels, find and navigate to meets,
+          buy & sell cars and parts, and build reputation with your profile & garage.
+        </p>
+        <div class="mt-7 flex flex-wrap items-center gap-3">
+          <a href="YOUR_INVESTOR_DECK_LINK" class="rounded-md bg-brand px-5 py-3 font-semibold">View Investor Deck</a>
+          <a href="mailto:YOUR_EMAIL" class="rounded-md border border-white/20 px-5 py-3">Get in Touch</a>
+        </div>
+        <div class="mt-6 text-xs text-white/50">Beta launching soon • iOS first • Android to follow</div>
+      </div>
+      <div class="relative">
+        <!-- Replace these images with your app screenshots -->
+        <div class="absolute -inset-4 blur-3xl bg-brand/20 rounded-3xl"></div>
+        <div class="relative card rounded-2xl p-2">
+          <img src="screens_share.png" alt="Share/Feed screen" class="rounded-xl w-full object-cover" />
+        </div>
+        <div class="hidden md:block absolute -bottom-8 -right-8 w-2/3 card rounded-2xl p-2">
+          <img src="screens_profile.png" alt="Profile screen" class="rounded-xl w-full object-cover" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social proof / Metrics (optional) -->
+  <section class="mx-auto max-w-7xl px-4">
+    <div class="grid sm:grid-cols-3 gap-4">
+      <div class="card rounded-xl p-6 text-center">
+        <div class="text-3xl font-bold">100M+</div>
+        <div class="text-white/60 text-sm">Global enthusiasts</div>
+      </div>
+      <div class="card rounded-xl p-6 text-center">
+        <div class="text-3xl font-bold">4-in-1</div>
+        <div class="text-white/60 text-sm">Reels • Meets • Maps • Market</div>
+      </div>
+      <div class="card rounded-xl p-6 text-center">
+        <div class="text-3xl font-bold">Creator-Ready</div>
+        <div class="text-white/60 text-sm">Monetization & analytics</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="mx-auto max-w-7xl px-4 py-16">
+    <h2 class="text-2xl md:text-3xl font-bold mb-8">What’s inside MotorSphere</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="card rounded-xl p-5">
+        <h3 class="font-semibold mb-2">Reels</h3>
+        <p class="text-white/70 text-sm">Vertical, high-engagement video feed with creator tools and analytics.</p>
+      </div>
+      <div class="card rounded-xl p-5">
+        <h3 class="font-semibold mb-2">Share</h3>
+        <p class="text-white/70 text-sm">Photo + long-form video with chapters, part tags, and affiliate shelf.</p>
+      </div>
+      <div class="card rounded-xl p-5">
+        <h3 class="font-semibold mb-2">Meets</h3>
+        <p class="text-white/70 text-sm">Discover, RSVP, and coordinate—built-in map previews and organizer tools.</p>
+      </div>
+      <div class="card rounded-xl p-5">
+        <h3 class="font-semibold mb-2">Maps</h3>
+        <p class="text-white/70 text-sm">Waze-style clustering, zoom-to-detail, and in-app turn-by-turn navigation.</p>
+      </div>
+      <div class="card rounded-xl p-5">
+        <h3 class="font-semibold mb-2">Market</h3>
+        <p class="text-white/70 text-sm">Vehicles & parts marketplace with filters, saved searches, and seller tools.</p>
+      </div>
+      <div class="card rounded-xl p-5">
+        <h3 class="font-semibold mb-2">Profile</h3>
+        <p class="text-white/70 text-sm">Garage showcase, AI Influence Score, levels, badges, and reels above garage.</p>
+      </div>
+      <div class="card rounded-xl p-5">
+        <h3 class="font-semibold mb-2">PTT Walkie-Talkie</h3>
+        <p class="text-white/70 text-sm">Crew channels for cruises; driver-safe big button and background audio.</p>
+      </div>
+      <div class="card rounded-xl p-5">
+        <h3 class="font-semibold mb-2">Safety & Trust</h3>
+        <p class="text-white/70 text-sm">Report, block, auto-moderation, clear track-first community rules.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screens / Mockups -->
+  <section id="screens" class="mx-auto max-w-7xl px-4 py-16">
+    <h2 class="text-2xl md:text-3xl font-bold mb-8">Product Preview</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <img src="screens_reels.png" class="card rounded-xl p-2" alt="Reels screen" />
+      <img src="screens_market.png" class="card rounded-xl p-2" alt="Market screen" />
+      <img src="screens_maps.png" class="card rounded-xl p-2" alt="Maps screen" />
+    </div>
+    <p class="text-white/60 text-sm mt-4">UI shown is pre-release and for illustration; features subject to change.</p>
+  </section>
+
+  <!-- Roadmap -->
+  <section id="roadmap" class="mx-auto max-w-7xl px-4 py-16">
+    <h2 class="text-2xl md:text-3xl font-bold mb-8">Roadmap</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="card rounded-xl p-6">
+        <h3 class="font-semibold mb-2">Phase 1 — Beta</h3>
+        <ul class="list-disc pl-5 text-white/70 text-sm space-y-1">
+          <li>iOS MVP (Reels, Share, Meets, Market, Profile)</li>
+          <li>Google Maps SDK & meet clustering</li>
+          <li>Private beta (500–2,000 testers)</li>
+        </ul>
+      </div>
+      <div class="card rounded-xl p-6">
+        <h3 class="font-semibold mb-2">Phase 2 — Launch</h3>
+        <ul class="list-disc pl-5 text-white/70 text-sm space-y-1">
+          <li>Public launch: US/CA/UK</li>
+          <li>Creator & organizer partnerships</li>
+          <li>Marketplace payments (Stripe Connect)</li>
+        </ul>
+      </div>
+      <div class="card rounded-xl p-6">
+        <h3 class="font-semibold mb-2">Phase 3 — Scale</h3>
+        <ul class="list-disc pl-5 text-white/70 text-sm space-y-1">
+          <li>Android parity + web read-only</li>
+          <li>AI recommendations & search</li>
+          <li>International expansion</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- About / Contact -->
+  <section id="contact" class="mx-auto max-w-7xl px-4 py-16">
+    <div class="grid md:grid-cols-2 gap-8 items-start">
+      <div class="card rounded-xl p-6">
+        <h2 class="text-2xl font-bold mb-4">Founder</h2>
+        <p class="text-white/70 text-sm">
+          Hi, I’m <strong>YOUR NAME</strong>, building MotorSphere to unite the global motor community with
+          creator-first tools, real-world meets, and a modern marketplace. Want to invest or partner?
+        </p>
+        <div class="mt-5 flex flex-wrap items-center gap-3">
+          <a href="mailto:YOUR_EMAIL" class="rounded-md bg-brand px-4 py-2 font-semibold">Email Me</a>
+          <a href="YOUR_LINKEDIN_URL" class="rounded-md border border-white/20 px-4 py-2">LinkedIn</a>
+          <a href="YOUR_INVESTOR_DECK_LINK" class="rounded-md border border-white/20 px-4 py-2">Investor Deck</a>
+        </div>
+      </div>
+      <form class="card rounded-xl p-6" name="contact" netlify>
+        <h2 class="text-2xl font-bold mb-4">Contact</h2>
+        <div class="grid gap-4">
+          <input class="w-full rounded-md bg-white/5 border border-white/10 px-3 py-2" name="name" placeholder="Your name" />
+          <input class="w-full rounded-md bg-white/5 border border-white/10 px-3 py-2" name="email" placeholder="Email" type="email" />
+          <textarea class="w-full rounded-md bg-white/5 border border-white/10 px-3 py-2" name="message" rows="4" placeholder="How can we help?"></textarea>
+          <button class="rounded-md bg-brand px-4 py-2 font-semibold" type="submit">Send</button>
+        </div>
+        <p class="text-xs text-white/40 mt-3">We respect your privacy.</p>
+      </form>
+    </div>
+    <footer class="mt-16 py-8 text-center text-white/40 text-sm border-t border-white/10">
+      © <span id="y"></span> MotorSphere, Inc. All rights reserved.
+    </footer>
+  </section>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+</body>
+</html>
