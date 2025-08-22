@@ -23,7 +23,7 @@
     "@type":"Organization",
     "name":"MotorSphere",
     "url":"https://YOUR_GITHUB_PAGES_URL/",
-    "logo":"https://YOUR_GITHUB_PAGES_URL/og.jpg",
+    "logo":"https://YOUR_GITHUB_PAGES_URL/logo.png",
     "sameAs":["YOUR_LINKEDIN_URL"]
   }
   </script>
@@ -39,12 +39,9 @@
             ink: '#0b0b0e',
             brand: { 50:'#F4EEFF',100:'#E9DCFF',200:'#CFB8FF',300:'#B494FF',400:'#9A70FF',500:'#7C3AED',600:'#6B29D3',700:'#581FB0',800:'#3C1677',900:'#241046' }
           },
-          boxShadow: {
-            glow: '0 0 80px 10px rgba(124,58,237,.25)'
-          },
+          boxShadow: { glow: '0 0 80px 10px rgba(124,58,237,.25)' },
           backgroundImage: {
-            ring: 'radial-gradient(800px 500px at 100% 0%, rgba(124,58,237,.28), rgba(124,58,237,0) 60%)',
-            grid: 'linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)'
+            ring: 'radial-gradient(800px 500px at 100% 0%, rgba(124,58,237,.28), rgba(124,58,237,0) 60%)'
           }
         }
       }
@@ -67,21 +64,15 @@
 <body class="antialiased bg-ink font-display">
   <!-- Background Accents -->
   <div class="pointer-events-none fixed inset-0 bg-ring"></div>
-  <div class="pointer-events-none fixed inset-0 opacity-[.15]" style="background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size:28px 28px;"></div>
 
   <!-- Nav -->
   <header class="sticky top-0 z-50 backdrop-blur bg-black/40 border-b border-white/10">
     <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <!-- Inline SVG Logo -->
-        <svg width="28" height="28" viewBox="0 0 64 64" class="drop-shadow" aria-hidden="true">
-          <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs>
-          <circle cx="32" cy="32" r="30" fill="url(#g)" opacity=".25"></circle>
-          <path d="M10 36c10-12 34-12 44 0M12 28c8-10 32-10 40 0" stroke="url(#g)" stroke-width="3" fill="none" stroke-linecap="round"/>
-          <circle cx="24" cy="44" r="4" fill="#fff"/><circle cx="40" cy="44" r="4" fill="#fff"/>
-        </svg>
+      <a href="#" class="flex items-center gap-3">
+        <!-- Your gold logo -->
+        <img src="logo.png" alt="MotorSphere logo" class="h-8 w-8 rounded-full object-contain ring-1 ring-white/10" />
         <span class="font-semibold tracking-wide">MotorSphere</span>
-      </div>
+      </a>
       <nav class="hidden md:flex items-center gap-6 text-sm text-white/80">
         <a href="#why" class="hover:text-white">Why</a>
         <a href="#features" class="hover:text-white">Features</a>
@@ -116,15 +107,32 @@
         <div class="mt-6 text-xs text-white/50">Beta soon • iOS first • Android & Web to follow</div>
       </div>
 
+      <!-- Hero Visual: always shows screenshots + logo (no empty alt text) -->
       <div class="relative fade-up" data-io>
         <div class="absolute -inset-6 rounded-3xl bg-brand-400/20 blur-[32px]"></div>
-        <div class="relative card rounded-2xl p-3 shadow-glow">
-          <img src="screens_share.png" class="rounded-xl w-full object-cover" alt="MotorSphere app preview" />
-        </div>
-        <div class="grid grid-cols-3 gap-2 mt-3 opacity-90">
-          <img src="screens_reels.png" class="rounded-lg card p-1" alt="Reels" />
-          <img src="screens_maps.png" class="rounded-lg card p-1" alt="Maps" />
-          <img src="screens_market.png" class="rounded-lg card p-1" alt="Market" />
+
+        <div class="relative card rounded-2xl p-6 shadow-glow">
+          <!-- Top row: logo + caption -->
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2">
+              <img src="logo.png" alt="MotorSphere logo" class="h-7 w-7 rounded-full object-contain ring-1 ring-white/10" />
+              <span class="text-sm text-white/80">MotorSphere Preview</span>
+            </div>
+            <span class="text-[11px] text-white/50">Reels • Meets • Maps • Market</span>
+          </div>
+
+          <!-- Device row -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <img src="screens_share.png"   alt="Share screen"   class="rounded-xl w-full object-cover" />
+            <img src="screens_reels.png"   alt="Reels screen"   class="rounded-xl w-full object-cover" />
+            <img src="screens_maps.png"    alt="Maps screen"    class="rounded-xl w-full object-cover" />
+            <img src="screens_market.png"  alt="Market screen"  class="rounded-xl w-full object-cover" />
+          </div>
+
+          <!-- Sub-caption -->
+          <p class="mt-4 text-xs text-white/50">
+            Actual app UI — built to scale globally.
+          </p>
         </div>
       </div>
     </div>
@@ -159,42 +167,34 @@
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-      <!-- Each card uses a simple inline icon -->
       <div class="card rounded-xl p-5 fade-up" data-io>
         <div class="flex items-center gap-2 mb-2"><span class="text-brand-300">▶</span><h3 class="font-semibold">Reels</h3></div>
         <p class="text-white/70 text-sm">High-engagement short video with creator tools & analytics.</p>
       </div>
-
       <div class="card rounded-xl p-5 fade-up" data-io>
         <div class="flex items-center gap-2 mb-2"><span class="text-brand-300">⧉</span><h3 class="font-semibold">Share</h3></div>
         <p class="text-white/70 text-sm">Long-form builds with chapters, parts tagging, & affiliate shelf.</p>
       </div>
-
       <div class="card rounded-xl p-5 fade-up" data-io>
         <div class="flex items-center gap-2 mb-2"><span class="text-brand-300">📍</span><h3 class="font-semibold">Meets</h3></div>
         <p class="text-white/70 text-sm">Discover, RSVP, coordinate; organizers get modern tools.</p>
       </div>
-
       <div class="card rounded-xl p-5 fade-up" data-io>
         <div class="flex items-center gap-2 mb-2"><span class="text-brand-300">🗺️</span><h3 class="font-semibold">Maps</h3></div>
         <p class="text-white/70 text-sm">Apple Maps SDK now; clustering, zoom-to-detail, in-app guidance.</p>
       </div>
-
       <div class="card rounded-xl p-5 fade-up" data-io>
         <div class="flex items-center gap-2 mb-2"><span class="text-brand-300">🛒</span><h3 class="font-semibold">Market</h3></div>
         <p class="text-white/70 text-sm">Vehicles & parts; rich filters, saved searches, seller analytics.</p>
       </div>
-
       <div class="card rounded-xl p-5 fade-up" data-io>
         <div class="flex items-center gap-2 mb-2"><span class="text-brand-300">🚗</span><h3 class="font-semibold">Garage</h3></div>
         <p class="text-white/70 text-sm">Showcase your builds, levels, badges, AI Influence Score.</p>
       </div>
-
       <div class="card rounded-xl p-5 fade-up" data-io>
         <div class="flex items-center gap-2 mb-2"><span class="text-brand-300">🎙️</span><h3 class="font-semibold">PTT Walkie-Talkie</h3></div>
         <p class="text-white/70 text-sm">Crew channels for cruises; driver-safe big button & background audio.</p>
       </div>
-
       <div class="card rounded-xl p-5 fade-up" data-io>
         <div class="flex items-center gap-2 mb-2"><span class="text-brand-300">🛡️</span><h3 class="font-semibold">Safety & Trust</h3></div>
         <p class="text-white/70 text-sm">Report, block, auto-moderation, clear track-first community rules.</p>
@@ -281,7 +281,6 @@
         </div>
       </div>
 
-      <!-- Simple contact form (Netlify-ready) -->
       <form class="card rounded-xl p-6 fade-up" data-io name="contact" netlify>
         <h2 class="text-2xl md:text-3xl font-bold mb-2">Contact</h2>
         <div class="grid gap-4">
@@ -309,16 +308,13 @@
 
   <!-- Micro-interactions -->
   <script>
-    // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Fade-in on view
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
     }, { threshold: .15 });
     document.querySelectorAll('[data-io]').forEach(el=>io.observe(el));
 
-    // KPI counters
     document.querySelectorAll('.counter').forEach(el=>{
       const target = +el.dataset.target, dur = 1800, start = performance.now();
       const step = (t)=>{
