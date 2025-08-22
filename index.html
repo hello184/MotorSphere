@@ -25,15 +25,13 @@
           colors: { brand: { DEFAULT: '#7C3AED' }, ink: '#0b0b0e' },
           boxShadow: { glow: '0 0 80px 10px rgba(124,58,237,.25)' },
           backgroundImage: {
-            'radial': 'radial-gradient(1200px 800px at 100% -10%, rgba(124,58,237,.25), rgba(124,58,237,0) 60%)',
-            'grid': 'linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)'
+            'radial': 'radial-gradient(1200px 800px at 100% -10%, rgba(124,58,237,.25), rgba(124,58,237,0) 60%)'
           }
         }
       }
     }
   </script>
 
-  <!-- Fav -->
   <link rel="icon" href="/favicon.ico" />
 
   <style>
@@ -42,7 +40,6 @@
     .card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); }
     .glass { background: rgba(124, 58, 237, 0.08); border: 1px solid rgba(124, 58, 237, 0.25); }
     .gradient-text { background: linear-gradient(90deg, #fff, #a78bfa 60%, #7C3AED); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .bg-grid { background-image: var(--grid); background-size: 28px 28px; opacity: .35 }
     .tilt { transform: perspective(1200px) rotateY(-8deg) rotateX(2deg); }
     .blur-glow { filter: blur(28px); opacity: .9 }
     .fade-up { opacity: 0; transform: translateY(16px); transition: .8s ease; }
@@ -94,18 +91,17 @@
         <div class="mt-6 text-xs text-white/50">Beta soon • iOS first • Android & Web to follow</div>
       </div>
 
-      <!-- Visual -->
+      <!-- Hero Visual (uses your clean file name) -->
       <div class="relative fade-up" data-io>
         <div class="absolute -inset-6 rounded-3xl bg-brand/20 blur-glow"></div>
         <div class="relative card rounded-2xl p-3 tilt shadow-glow">
-          <!-- Use your actual sim screenshot filename below -->
-          <img src="Simulator Screenshot - iPhone 16 Pro - 2025-08-21 at 01.50.20.png" class="rounded-xl w-full object-cover" alt="MotorSphere app preview" />
+          <img src="screens_share.png" class="rounded-xl w-full object-cover" alt="MotorSphere app preview" />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Social proof -->
+  <!-- Social proof / Why now -->
   <section id="why" class="mx-auto max-w-7xl px-4 pb-4 fade-up" data-io>
     <div class="grid sm:grid-cols-3 gap-4">
       <div class="card rounded-xl p-6 text-center">
@@ -210,7 +206,7 @@
     </div>
   </section>
 
-  <!-- Testimonial / Credibility -->
+  <!-- Testimonials -->
   <section class="mx-auto max-w-7xl px-4 pb-16">
     <div class="grid md:grid-cols-3 gap-6">
       <div class="card rounded-xl p-6 fade-up" data-io>
