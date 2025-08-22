@@ -8,6 +8,7 @@
   <!-- SEO -->
   <meta name="description" content="MotorSphere is the home for motor culture: Reels, Meets, Maps, Market, and your Garage—built to become #1 globally." />
   <link rel="canonical" href="https://YOUR_GITHUB_PAGES_URL/" />
+  <meta name="theme-color" content="#0b0b0e" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="MotorSphere — The Motor Culture Platform" />
@@ -27,6 +28,13 @@
     "sameAs":["YOUR_LINKEDIN_URL"]
   }
   </script>
+
+  <!-- Preload key images (faster first paint) -->
+  <link rel="preload" as="image" href="/logo.png" />
+  <link rel="preload" as="image" href="/screens_share.png" />
+  <link rel="preload" as="image" href="/screens_reels.png" />
+  <link rel="preload" as="image" href="/screens_maps.png" />
+  <link rel="preload" as="image" href="/screens_market.png" />
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -48,7 +56,9 @@
     }
   </script>
 
-  <link rel="icon" href="/favicon.ico" />
+  <!-- Favicon (uses your gold logo) -->
+  <link rel="icon" href="/logo.png" type="image/png" />
+
   <style>
     :root { --bg: #0b0b0e; }
     body { background: var(--bg); color: #eaeaea; }
@@ -58,19 +68,19 @@
     .fade-up { opacity: 0; transform: translateY(16px); transition: .8s ease; }
     .fade-up.in { opacity: 1; transform: translateY(0); }
     html { scroll-behavior:smooth; }
+    img { color: transparent; } /* avoids alt text flash */
   </style>
 </head>
 
 <body class="antialiased bg-ink font-display">
-  <!-- Background Accents -->
+  <!-- Background Accent -->
   <div class="pointer-events-none fixed inset-0 bg-ring"></div>
 
   <!-- Nav -->
   <header class="sticky top-0 z-50 backdrop-blur bg-black/40 border-b border-white/10">
     <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
       <a href="#" class="flex items-center gap-3">
-        <!-- Your gold logo -->
-        <img src="logo.png" alt="MotorSphere logo" class="h-8 w-8 rounded-full object-contain ring-1 ring-white/10" />
+        <img src="/logo.png" alt="MotorSphere logo" class="h-8 w-8 rounded-full object-contain ring-1 ring-white/10" />
         <span class="font-semibold tracking-wide">MotorSphere</span>
       </a>
       <nav class="hidden md:flex items-center gap-6 text-sm text-white/80">
@@ -107,7 +117,7 @@
         <div class="mt-6 text-xs text-white/50">Beta soon • iOS first • Android & Web to follow</div>
       </div>
 
-      <!-- Hero Visual: always shows screenshots + logo (no empty alt text) -->
+      <!-- Hero Visual: logo + 4 screenshots -->
       <div class="relative fade-up" data-io>
         <div class="absolute -inset-6 rounded-3xl bg-brand-400/20 blur-[32px]"></div>
 
@@ -115,7 +125,7 @@
           <!-- Top row: logo + caption -->
           <div class="flex items-center justify-between mb-4">
             <div class="flex items-center gap-2">
-              <img src="logo.png" alt="MotorSphere logo" class="h-7 w-7 rounded-full object-contain ring-1 ring-white/10" />
+              <img src="/logo.png" alt="MotorSphere logo" class="h-7 w-7 rounded-full object-contain ring-1 ring-white/10" />
               <span class="text-sm text-white/80">MotorSphere Preview</span>
             </div>
             <span class="text-[11px] text-white/50">Reels • Meets • Maps • Market</span>
@@ -123,10 +133,10 @@
 
           <!-- Device row -->
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <img src="screens_share.png"   alt="Share screen"   class="rounded-xl w-full object-cover" />
-            <img src="screens_reels.png"   alt="Reels screen"   class="rounded-xl w-full object-cover" />
-            <img src="screens_maps.png"    alt="Maps screen"    class="rounded-xl w-full object-cover" />
-            <img src="screens_market.png"  alt="Market screen"  class="rounded-xl w-full object-cover" />
+            <img src="/screens_share.png"   loading="lazy" alt="Share screen"   class="rounded-xl w-full object-cover" onerror="this.style.display='none'">
+            <img src="/screens_reels.png"   loading="lazy" alt="Reels screen"   class="rounded-xl w-full object-cover" onerror="this.style.display='none'">
+            <img src="/screens_maps.png"    loading="lazy" alt="Maps screen"    class="rounded-xl w-full object-cover" onerror="this.style.display='none'">
+            <img src="/screens_market.png"  loading="lazy" alt="Market screen"  class="rounded-xl w-full object-cover" onerror="this.style.display='none'">
           </div>
 
           <!-- Sub-caption -->
@@ -265,6 +275,25 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section id="faq" class="mx-auto max-w-7xl px-4 pb-8">
+    <h2 class="text-2xl md:text-3xl font-bold mb-6 fade-up" data-io>FAQ</h2>
+    <div class="space-y-3">
+      <details class="card rounded-xl p-5 fade-up" data-io>
+        <summary class="cursor-pointer text-white/90 font-semibold">What makes MotorSphere different?</summary>
+        <p class="text-white/70 text-sm mt-2">We combine content, meets, maps, and marketplace into one loop—plan IRL, create, and transact inside the same platform.</p>
+      </details>
+      <details class="card rounded-xl p-5 fade-up" data-io>
+        <summary class="cursor-pointer text-white/90 font-semibold">How do you launch and grow?</summary>
+        <p class="text-white/70 text-sm mt-2">City clusters + creator cohorts + event partners. We seed density, then scale regionally.</p>
+      </details>
+      <details class="card rounded-xl p-5 fade-up" data-io>
+        <summary class="cursor-pointer text-white/90 font-semibold">How will you monetize?</summary>
+        <p class="text-white/70 text-sm mt-2">Ads (tasteful), marketplace fees, tips/coins, affiliate part shelf, pro tools, and event ticketing.</p>
+      </details>
+    </div>
+  </section>
+
   <!-- Founder / Contact -->
   <section id="contact" class="mx-auto max-w-7xl px-4 pb-24">
     <div class="grid md:grid-cols-2 gap-8 items-start">
@@ -308,13 +337,16 @@
 
   <!-- Micro-interactions -->
   <script>
+    // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
+    // Fade-in on view
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
     }, { threshold: .15 });
     document.querySelectorAll('[data-io]').forEach(el=>io.observe(el));
 
+    // KPI counters
     document.querySelectorAll('.counter').forEach(el=>{
       const target = +el.dataset.target, dur = 1800, start = performance.now();
       const step = (t)=>{
