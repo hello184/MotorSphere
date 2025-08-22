@@ -6,8 +6,7 @@
   <title>MotorSphere — The Motor Culture Platform</title>
 
   <!-- SEO -->
-  <meta name="description" content="MotorSphere is the home for motor culture: Reels, Meets, Maps, Marketplace—with your Garage at the center." />
-  <meta name="keywords" content="cars, car meets, marketplace, reels, motorsports, events, maps, garage" />
+  <meta name="description" content="MotorSphere: The home for motor culture. Reels, Meets, Maps, Marketplace, and your Garage — built to become #1 globally." />
   <link rel="canonical" href="https://YOUR_GITHUB_PAGES_URL/" />
 
   <!-- Open Graph -->
@@ -19,17 +18,44 @@
 
   <!-- Tailwind via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config = { theme: { extend: { colors: { brand: { DEFAULT: '#7C3AED' }}}}}</script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: { DEFAULT: '#7C3AED' }, ink: '#0b0b0e' },
+          boxShadow: { glow: '0 0 80px 10px rgba(124,58,237,.25)' },
+          backgroundImage: {
+            'radial': 'radial-gradient(1200px 800px at 100% -10%, rgba(124,58,237,.25), rgba(124,58,237,0) 60%)',
+            'grid': 'linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)'
+          }
+        }
+      }
+    }
+  </script>
 
+  <!-- Fav -->
   <link rel="icon" href="/favicon.ico" />
+
   <style>
-    body { background: #0b0b0e; color: #eaeaea; }
+    :root { --bg: #0b0b0e; --muted: rgba(255,255,255,.62); }
+    body { background: var(--bg); color: #eaeaea; }
     .card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); }
-    .gradient-text { background: linear-gradient(90deg, #fff, #a78bfa); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .glass { background: rgba(124, 58, 237, 0.08); border: 1px solid rgba(124, 58, 237, 0.25); }
+    .gradient-text { background: linear-gradient(90deg, #fff, #a78bfa 60%, #7C3AED); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .bg-grid { background-image: var(--grid); background-size: 28px 28px; opacity: .35 }
+    .tilt { transform: perspective(1200px) rotateY(-8deg) rotateX(2deg); }
+    .blur-glow { filter: blur(28px); opacity: .9 }
+    .fade-up { opacity: 0; transform: translateY(16px); transition: .8s ease; }
+    .fade-up.in { opacity: 1; transform: translateY(0); }
+    html { scroll-behavior: smooth; }
   </style>
 </head>
-<body class="antialiased">
-  <!-- Nav -->
+
+<body class="antialiased bg-ink">
+  <!-- Top Glow -->
+  <div class="pointer-events-none fixed inset-0 bg-radial"></div>
+
+  <!-- Navbar -->
   <header class="sticky top-0 z-50 backdrop-blur bg-black/40 border-b border-white/10">
     <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
       <div class="flex items-center gap-3">
@@ -37,52 +63,54 @@
         <span class="font-semibold tracking-wide">MotorSphere</span>
       </div>
       <nav class="hidden md:flex items-center gap-6 text-sm text-white/80">
+        <a href="#why" class="hover:text-white">Why</a>
         <a href="#features" class="hover:text-white">Features</a>
         <a href="#roadmap" class="hover:text-white">Roadmap</a>
+        <a href="#faq" class="hover:text-white">FAQ</a>
         <a href="#contact" class="hover:text-white">Contact</a>
       </nav>
-      <a href="#contact" class="hidden sm:inline-block rounded-md bg-brand px-4 py-2 text-sm font-semibold">Investor Contact</a>
+      <a href="#contact" class="hidden sm:inline-block rounded-md bg-brand px-4 py-2 text-sm font-semibold shadow-glow">Investor Contact</a>
     </div>
   </header>
 
   <!-- Hero -->
-  <section class="mx-auto max-w-7xl px-4 py-16 md:py-24">
-    <div class="grid md:grid-cols-2 items-center gap-10">
-      <div>
+  <section class="relative overflow-hidden">
+    <div class="absolute -top-24 -right-24 w-[520px] h-[520px] rounded-full bg-brand/30 blur-3xl"></div>
+    <div class="mx-auto max-w-7xl px-4 py-16 md:py-24 grid md:grid-cols-2 items-center gap-10">
+      <div class="fade-up" data-io>
         <p class="text-xs uppercase tracking-widest text-white/50 mb-3">The Motor Culture Platform</p>
         <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
           One home for <span class="gradient-text">Reels, Meets, Maps,</span> & Marketplace
         </h1>
-        <p class="mt-5 text-white/70">
-          MotorSphere brings the entire motor world together—create and watch reels, find and navigate to meets,
-          buy & sell cars and parts, and showcase your builds in your <strong>Garage</strong>.
+        <p class="mt-5 text-white/70 text-lg">
+          MotorSphere unites the global motor world—create and watch reels, plan meets with in-app guidance,
+          buy & sell vehicles and parts, and showcase your builds in your <b>Garage</b>. Designed to become
+          the <b>#1 destination</b> for motor culture worldwide.
         </p>
         <div class="mt-7 flex flex-wrap items-center gap-3">
           <a href="YOUR_INVESTOR_DECK_LINK" class="rounded-md bg-brand px-5 py-3 font-semibold">View Investor Deck</a>
           <a href="mailto:YOUR_EMAIL" class="rounded-md border border-white/20 px-5 py-3">Get in Touch</a>
         </div>
-        <div class="mt-6 text-xs text-white/50">Beta launching soon • iOS first • Android to follow</div>
+        <div class="mt-6 text-xs text-white/50">Beta soon • iOS first • Android & Web to follow</div>
       </div>
 
-      <!-- Replace with your screenshot (kept single image for hero) -->
-      <div class="relative">
-        <div class="absolute -inset-4 blur-3xl bg-brand/20 rounded-3xl"></div>
-        <div class="relative card rounded-2xl p-2">
-          <img
-            src="Simulator Screenshot - iPhone 16 Pro - 2025-08-21 at 01.50.20.png"
-            alt="App screen"
-            class="rounded-xl w-full object-cover" />
+      <!-- Visual -->
+      <div class="relative fade-up" data-io>
+        <div class="absolute -inset-6 rounded-3xl bg-brand/20 blur-glow"></div>
+        <div class="relative card rounded-2xl p-3 tilt shadow-glow">
+          <!-- Use your actual sim screenshot filename below -->
+          <img src="Simulator Screenshot - iPhone 16 Pro - 2025-08-21 at 01.50.20.png" class="rounded-xl w-full object-cover" alt="MotorSphere app preview" />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Quick metrics -->
-  <section class="mx-auto max-w-7xl px-4">
+  <!-- Social proof -->
+  <section id="why" class="mx-auto max-w-7xl px-4 pb-4 fade-up" data-io>
     <div class="grid sm:grid-cols-3 gap-4">
       <div class="card rounded-xl p-6 text-center">
-        <div class="text-3xl font-bold">1 Billion+</div>
-        <div class="text-white/60 text-sm">Global motor enthusiasts</div>
+        <div class="text-4xl font-extrabold counter" data-target="1000000000">0</div>
+        <div class="text-white/60 text-sm mt-1">Global motor enthusiasts</div>
       </div>
       <div class="card rounded-xl p-6 text-center">
         <div class="text-3xl font-bold">4-in-1</div>
@@ -90,64 +118,80 @@
       </div>
       <div class="card rounded-xl p-6 text-center">
         <div class="text-3xl font-bold">Garage-first</div>
-        <div class="text-white/60 text-sm">Showcase builds & reputation</div>
+        <div class="text-white/60 text-sm">Builds • Badges • Levels • Influence</div>
+      </div>
+    </div>
+    <p class="text-white/60 text-sm mt-6">
+      The community is huge and fragmented across apps. MotorSphere consolidates discovery, IRL coordination, content, and commerce into one platform.
+    </p>
+  </section>
+
+  <!-- Feature stack -->
+  <section id="features" class="mx-auto max-w-7xl px-4 py-16">
+    <div class="mb-8 fade-up" data-io>
+      <h2 class="text-2xl md:text-3xl font-bold">What’s inside MotorSphere</h2>
+      <p class="text-white/60">This is just the start.</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="card rounded-xl p-5 fade-up" data-io>
+        <h3 class="font-semibold mb-2">Reels</h3>
+        <p class="text-white/70 text-sm">Vertical, high-engagement feed with creator tools, analytics, and growth loops.</p>
+      </div>
+      <div class="card rounded-xl p-5 fade-up" data-io>
+        <h3 class="font-semibold mb-2">Share</h3>
+        <p class="text-white/70 text-sm">Photo + long-form video with chapters, part tags, and an affiliate shelf.</p>
+      </div>
+      <div class="card rounded-xl p-5 fade-up" data-io>
+        <h3 class="font-semibold mb-2">Meets</h3>
+        <p class="text-white/70 text-sm">Discover, RSVP, coordinate. Organizers get tools; attendees get guidance.</p>
+      </div>
+      <div class="card rounded-xl p-5 fade-up" data-io>
+        <h3 class="font-semibold mb-2">Maps</h3>
+        <p class="text-white/70 text-sm">Apple Maps SDK now; clustering, zoom-to-detail, in-app turn cues next.</p>
+      </div>
+      <div class="card rounded-xl p-5 fade-up" data-io>
+        <h3 class="font-semibold mb-2">Market</h3>
+        <p class="text-white/70 text-sm">Vehicles & parts; rich filters, saved searches, seller tools.</p>
+      </div>
+      <div class="card rounded-xl p-5 fade-up" data-io>
+        <h3 class="font-semibold mb-2">Garage</h3>
+        <p class="text-white/70 text-sm">Your builds, badges, AI Influence Score, levels, and highlight reels.</p>
+      </div>
+      <div class="card rounded-xl p-5 fade-up" data-io>
+        <h3 class="font-semibold mb-2">PTT Walkie-Talkie</h3>
+        <p class="text-white/70 text-sm">Crew channels for cruises; driver-safe PTT and background audio.</p>
+      </div>
+      <div class="card rounded-xl p-5 fade-up" data-io>
+        <h3 class="font-semibold mb-2">Safety & Trust</h3>
+        <p class="text-white/70 text-sm">Report, block, auto-moderation, & track-first community rules.</p>
       </div>
     </div>
   </section>
 
-  <!-- Features -->
-  <section id="features" class="mx-auto max-w-7xl px-4 py-16">
-    <h2 class="text-2xl md:text-3xl font-bold mb-2">What’s inside MotorSphere</h2>
-    <p class="text-white/60 mb-8">This is just the start.</p>
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div class="card rounded-xl p-5">
-        <h3 class="font-semibold mb-2">Reels</h3>
-        <p class="text-white/70 text-sm">Vertical, high-engagement video feed with creator tools and analytics.</p>
-      </div>
-      <div class="card rounded-xl p-5">
-        <h3 class="font-semibold mb-2">Share</h3>
-        <p class="text-white/70 text-sm">Photo + long-form video with chapters, vehicle & part tags, and affiliate shelf.</p>
-      </div>
-      <div class="card rounded-xl p-5">
-        <h3 class="font-semibold mb-2">Meets</h3>
-        <p class="text-white/70 text-sm">Discover, RSVP, and coordinate—map previews, route planning, organizer tools.</p>
-      </div>
-      <div class="card rounded-xl p-5">
-        <h3 class="font-semibold mb-2">Maps</h3>
-        <p class="text-white/70 text-sm">Apple Maps SDK (now), Waze-style clustering, zoom-to-detail, in-app guidance.</p>
-      </div>
-      <div class="card rounded-xl p-5">
-        <h3 class="font-semibold mb-2">Market</h3>
-        <p class="text-white/70 text-sm">Vehicles & parts marketplace with filters, saved searches, seller analytics.</p>
-      </div>
-      <div class="card rounded-xl p-5">
-        <h3 class="font-semibold mb-2">Garage</h3>
-        <p class="text-white/70 text-sm">Your builds, badges, AI Influence Score, levels, and reels pinned above your cars.</p>
-      </div>
-      <div class="card rounded-xl p-5">
-        <h3 class="font-semibold mb-2">PTT Walkie-Talkie</h3>
-        <p class="text-white/70 text-sm">Crew channels for cruises; driver-safe big button and background audio.</p>
-      </div>
-      <div class="card rounded-xl p-5">
-        <h3 class="font-semibold mb-2">Safety & Trust</h3>
-        <p class="text-white/70 text-sm">Report, block, auto-moderation, clear track-first community rules.</p>
-      </div>
+  <!-- Vision strip -->
+  <section class="mx-auto max-w-7xl px-4 pb-4">
+    <div class="glass rounded-2xl p-6 md:p-8 fade-up" data-io>
+      <div class="text-xl md:text-2xl font-semibold">The Vision</div>
+      <p class="text-white/70 mt-2">
+        Own the intersection of content, community, meets, and commerce for everything with a motor — cars, bikes, off-road, marine.
+        We’re building the platform that happens <i>before, during, and after</i> every meet, build, and purchase.
+      </p>
     </div>
   </section>
 
   <!-- Roadmap -->
   <section id="roadmap" class="mx-auto max-w-7xl px-4 py-16">
-    <h2 class="text-2xl md:text-3xl font-bold mb-8">Roadmap</h2>
+    <h2 class="text-2xl md:text-3xl font-bold mb-8 fade-up" data-io>Roadmap</h2>
     <div class="grid md:grid-cols-3 gap-6">
-      <div class="card rounded-xl p-6">
+      <div class="card rounded-xl p-6 fade-up" data-io>
         <h3 class="font-semibold mb-2">Phase 1 — Beta (0–3 months)</h3>
         <ul class="list-disc pl-5 text-white/70 text-sm space-y-1">
-          <li>iOS MVP: Share, Market, Maps, Meets, Reels, <strong>Garage</strong></li>
+          <li>iOS MVP: Share, Market, Maps, Meets, Reels, <b>Garage</b></li>
           <li>Apple Maps SDK with meet clustering</li>
           <li>Private beta (500–2,000 investors)</li>
         </ul>
       </div>
-      <div class="card rounded-xl p-6">
+      <div class="card rounded-xl p-6 fade-up" data-io>
         <h3 class="font-semibold mb-2">Phase 2 — Launch (3–6 months)</h3>
         <ul class="list-disc pl-5 text-white/70 text-sm space-y-1">
           <li>Public launch in US/CA/UK</li>
@@ -155,7 +199,7 @@
           <li>Event ticketing beta</li>
         </ul>
       </div>
-      <div class="card rounded-xl p-6">
+      <div class="card rounded-xl p-6 fade-up" data-io>
         <h3 class="font-semibold mb-2">Phase 3 — Scale (6–12 months)</h3>
         <ul class="list-disc pl-5 text-white/70 text-sm space-y-1">
           <li>Full access on any device</li>
@@ -166,13 +210,53 @@
     </div>
   </section>
 
+  <!-- Testimonial / Credibility -->
+  <section class="mx-auto max-w-7xl px-4 pb-16">
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="card rounded-xl p-6 fade-up" data-io>
+        <div class="text-white/90 font-semibold">Built for the community</div>
+        <p class="text-white/70 text-sm mt-2">“Finally—one platform that actually understands meets, maps, and builds in one place.”</p>
+        <div class="mt-4 text-xs text-white/40">Early Beta User</div>
+      </div>
+      <div class="card rounded-xl p-6 fade-up" data-io>
+        <div class="text-white/90 font-semibold">Creator-ready</div>
+        <p class="text-white/70 text-sm mt-2">“Reels plus a parts shelf? That’s revenue + reach for builders and shops.”</p>
+        <div class="mt-4 text-xs text-white/40">Partner Shop</div>
+      </div>
+      <div class="card rounded-xl p-6 fade-up" data-io>
+        <div class="text-white/90 font-semibold">Event-first</div>
+        <p class="text-white/70 text-sm mt-2">“RSVP, guidance, and ticketing—less chaos, more turnout.”</p>
+        <div class="mt-4 text-xs text-white/40">Event Organizer</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="mx-auto max-w-7xl px-4 pb-8">
+    <h2 class="text-2xl md:text-3xl font-bold mb-6 fade-up" data-io>FAQ</h2>
+    <div class="space-y-3">
+      <details class="card rounded-xl p-5 fade-up" data-io>
+        <summary class="cursor-pointer text-white/90 font-semibold">What makes MotorSphere different?</summary>
+        <p class="text-white/70 text-sm mt-2">We combine content, meets, maps, and marketplace into one loop—plan IRL, create, and transact inside the same platform.</p>
+      </details>
+      <details class="card rounded-xl p-5 fade-up" data-io>
+        <summary class="cursor-pointer text-white/90 font-semibold">How do you launch and grow?</summary>
+        <p class="text-white/70 text-sm mt-2">City clusters + creator cohorts + event partners. We seed density, then scale regionally.</p>
+      </details>
+      <details class="card rounded-xl p-5 fade-up" data-io>
+        <summary class="cursor-pointer text-white/90 font-semibold">How will you monetize?</summary>
+        <p class="text-white/70 text-sm mt-2">Ads (tasteful), marketplace fees, tips/coins, affiliate part shelf, pro tools, and event ticketing.</p>
+      </details>
+    </div>
+  </section>
+
   <!-- Founder / Contact -->
   <section id="contact" class="mx-auto max-w-7xl px-4 py-16">
     <div class="grid md:grid-cols-2 gap-8 items-start">
-      <div class="card rounded-xl p-6">
+      <div class="card rounded-xl p-6 fade-up" data-io>
         <h2 class="text-2xl font-bold mb-4">Founder</h2>
         <p class="text-white/70 text-sm">
-          Hi, I’m <strong>Ethan Lowell</strong>, building MotorSphere to unite the global motor community with
+          Hi, I’m <b>Ethan Lowell</b>, building MotorSphere to unite the global motor community with
           creator-first tools, real-world meets, and a modern marketplace.
         </p>
         <div class="mt-5 flex flex-wrap items-center gap-3">
@@ -181,7 +265,7 @@
           <a href="YOUR_INVESTOR_DECK_LINK" class="rounded-md border border-white/20 px-4 py-2">Investor Deck</a>
         </div>
       </div>
-      <form class="card rounded-xl p-6" name="contact" netlify>
+      <form class="card rounded-xl p-6 fade-up" data-io name="contact" netlify>
         <h2 class="text-2xl font-bold mb-4">Contact</h2>
         <div class="grid gap-4">
           <input class="w-full rounded-md bg-white/5 border border-white/10 px-3 py-2" name="name" placeholder="Your name" />
@@ -192,11 +276,46 @@
         <p class="text-xs text-white/40 mt-3">We respect your privacy.</p>
       </form>
     </div>
+
+    <!-- Sticky bottom CTA -->
+    <div class="fixed bottom-4 left-1/2 -translate-x-1/2 z-40">
+      <div class="glass rounded-full px-4 py-2 shadow-glow flex items-center gap-3">
+        <span class="text-sm">Interested in partnering or investing?</span>
+        <a href="mailto:YOUR_EMAIL" class="rounded-full bg-brand px-4 py-2 text-sm font-semibold">Contact Ethan</a>
+      </div>
+    </div>
+
     <footer class="mt-16 py-8 text-center text-white/40 text-sm border-t border-white/10">
       © <span id="y"></span> MotorSphere, Inc. All rights reserved.
     </footer>
   </section>
 
-  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+  <!-- Tiny JS: counters + fade-ins -->
+  <script>
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // IntersectionObserver for fade-up
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    }, { threshold: .15 });
+    document.querySelectorAll('[data-io]').forEach(el=>io.observe(el));
+
+    // Counter animation
+    const counters = document.querySelectorAll('.counter');
+    const animateCount = (el) => {
+      const target = +el.dataset.target;
+      const dur = 1500; // ms
+      const start = performance.now();
+      const step = (t)=>{
+        const p = Math.min(1, (t-start)/dur);
+        const val = Math.floor(target * (p*p*(3-2*p))); // ease
+        el.textContent = val.toLocaleString();
+        if(p<1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    counters.forEach(c=>animateCount(c));
+  </script>
 </body>
 </html>
