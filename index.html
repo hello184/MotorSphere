@@ -30,7 +30,7 @@
   </script>
 
   <!-- Preload key image -->
-  <link rel="preload" as="image" href="/logo.png" />
+  <link rel="preload" as="image" href="logo.png" />
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -61,7 +61,7 @@
   </script>
 
   <!-- Favicon -->
-  <link rel="icon" href="/logo.png" type="image/png" />
+  <link rel="icon" href="logo.png" type="image/png" />
 
   <style>
     :root { --bg:#0b0b0e; }
@@ -84,7 +84,12 @@
   <header class="sticky top-0 z-50 backdrop-blur bg-black/40 border-b border-white/10">
     <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
       <a href="#" class="flex items-center gap-3">
-        <img src="/logo.png" alt="MotorSphere logo" class="h-8 w-8 rounded-full object-contain ring-1 ring-white/10" />
+        <img
+          src="logo.png"
+          alt="MotorSphere logo"
+          class="h-8 w-8 rounded-full object-contain ring-1 ring-white/10"
+          onerror="this.outerHTML=`<svg width='32' height='32' viewBox='0 0 64 64' class='ring-1 ring-white/10 rounded-full'><defs><linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='#a78bfa'/><stop offset='1' stop-color='#7C3AED'/></linearGradient></defs><circle cx='32' cy='32' r='30' fill='url(#g)' opacity='.25'></circle><path d='M10 36c10-12 34-12 44 0M12 28c8-10 32-10 40 0' stroke='url(#g)' stroke-width='3' fill='none' stroke-linecap='round'/><circle cx='24' cy='44' r='4' fill='#fff'/><circle cx='40' cy='44' r='4' fill='#fff'/></svg>`;"
+        />
         <span class="font-semibold tracking-wide">MotorSphere</span>
       </a>
       <nav class="hidden md:flex items-center gap-6 text-sm text-white/80">
@@ -121,7 +126,7 @@
         <div class="mt-6 text-xs text-white/50">Beta soon • iOS first • Android & Web to follow</div>
       </div>
 
-      <!-- Hero Visual: CODE-ONLY device preview (no images) -->
+      <!-- Hero Visual: CODE-ONLY device preview (no screenshots) -->
       <div class="relative fade-up" data-io aria-label="MotorSphere Preview">
         <div class="absolute -inset-6 rounded-3xl bg-brand-400/20 blur-[32px]"></div>
 
@@ -129,7 +134,8 @@
           <!-- Logo row -->
           <div class="flex items-center justify-between mb-4">
             <div class="flex items-center gap-2">
-              <img src="/logo.png" alt="" class="h-7 w-7 rounded-full object-contain ring-1 ring-white/10" />
+              <img src="logo.png" alt="" class="h-7 w-7 rounded-full object-contain ring-1 ring-white/10"
+                   onerror="this.style.display='none'">
               <span class="text-sm text-white/80">MotorSphere Preview</span>
             </div>
             <span class="text-[11px] text-white/50">Reels • Meets • Maps • Market</span>
@@ -393,13 +399,6 @@
       </form>
     </div>
 
-    <!-- Sticky CTA -->
-    <div class="fixed bottom-4 left-1/2 -translate-x-1/2 z-40">
-      <div class="glass rounded-full px-4 py-2 shadow-glow flex items-center gap-3">
-        <span class="text-sm">Interested in partnering or investing?</span>
-        <a href="mailto:YOUR_EMAIL" class="rounded-full bg-brand-600 hover:bg-brand-500 px-4 py-2 text-sm font-semibold">Contact Ethan</a>
-      </div>
-    </div>
   </section>
 
   <footer class="text-center text-xs text-white/50 py-8 border-t border-white/10">
