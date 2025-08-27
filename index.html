@@ -6,13 +6,13 @@
   <title>MotorSphere — The Motor Culture Platform</title>
 
   <!-- SEO -->
-  <meta name="description" content="MotorSphere is the home for motor culture: Reels, Meets, Maps, Market, and your Garage—built for every enthusiast." />
+  <meta name="description" content="MotorSphere is the home for motor culture: Reels, Share, Meets, Maps, Market, and your Garage—built for every enthusiast." />
   <link rel="canonical" href="https://motorsphere.app/" />
   <meta name="theme-color" content="#0b0b0e" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="MotorSphere — The Motor Culture Platform" />
-  <meta property="og:description" content="Where Motor Culture Lives — Reels, Meets, Maps, Market, and your Garage." />
+  <meta property="og:description" content="Where Motor Culture Lives — Reels, Share, Meets, Maps, Market, and your Garage." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://motorsphere.app/og.jpg" />
   <meta property="og:url" content="https://motorsphere.app/" />
@@ -20,7 +20,7 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="MotorSphere — The Motor Culture Platform" />
-  <meta name="twitter:description" content="Where Motor Culture Lives — Reels, Meets, Maps, Market, and your Garage." />
+  <meta name="twitter:description" content="Where Motor Culture Lives — Reels, Share, Meets, Maps, Market, and your Garage." />
   <meta name="twitter:image" content="https://motorsphere.app/og.jpg" />
 
   <!-- Brand JSON-LD -->
@@ -124,7 +124,7 @@
           Where <span class="gradient-text">Motor Culture</span> Lives
         </h1>
         <p class="mt-5 text-white/70 text-lg">
-          Built for <b>every enthusiast</b>—cars, bikes, trucks, off-road, marine. Reels, Meets, Maps, Market, and your Garage.
+          Built for <b>every enthusiast</b>—cars, bikes, trucks, off-road, marine. Reels, Share, Meets, Maps, Market, and your Garage.
           What you see now is only the beginning—some tabs stay under wraps until launch. 👀
         </p>
         <div class="mt-7 flex flex-wrap items-center gap-3">
@@ -234,7 +234,7 @@
       </div>
       <div class="card rounded-xl p-6 text-center">
         <div class="text-3xl font-bold">All-in-one</div>
-        <div class="text-white/60 text-sm">Reels • Meets • Maps • Market • Garage</div>
+        <div class="text-white/60 text-sm">Reels • <b>Share</b> • Meets • Maps • Market • Garage</div>
       </div>
       <div class="card rounded-xl p-6 text-center">
         <div class="text-3xl font-bold">Built for everyone</div>
@@ -305,7 +305,7 @@
     <h2 class="text-2xl md:text-3xl font-bold mb-8 fade-up" data-io>Roadmap</h2>
     <div class="grid md:grid-cols-3 gap-6">
       <div class="card rounded-xl p-6 fade-up" data-io>
-        <h3 class="font-semibold mb-2">Phase 1 — Beta (0–3 months)</h3>
+        <h3 class="font-semibold mb-2">Phase 1 — Beta</h3>
         <ul class="list-disc pl-5 text-white/70 text-sm space-y-1">
           <li>iOS MVP across core tabs</li>
           <li>Private beta (select regions & partners)</li>
@@ -313,7 +313,7 @@
         </ul>
       </div>
       <div class="card rounded-xl p-6 fade-up" data-io>
-        <h3 class="font-semibold mb-2">Phase 2 — Launch (3–6 months)</h3>
+        <h3 class="font-semibold mb-2">Phase 2 — Launch</h3>
         <ul class="list-disc pl-5 text-white/70 text-sm space-y-1">
           <li>Public launch in priority markets</li>
           <li>Creator & organizer partnerships</li>
@@ -321,7 +321,7 @@
         </ul>
       </div>
       <div class="card rounded-xl p-6 fade-up" data-io>
-        <h3 class="font-semibold mb-2">Phase 3 — Scale (6–12 months)</h3>
+        <h3 class="font-semibold mb-2">Phase 3 — Scale</h3>
         <ul class="list-disc pl-5 text-white/70 text-sm space-y-1">
           <li>All platforms (iOS • Android • Web)</li>
           <li>Expanded features & new tabs</li>
@@ -392,8 +392,9 @@
       class="card rounded-xl p-6 grid gap-4"
       name="waitlist"
       method="POST"
-      netlify
+      data-netlify="true"
       netlify-honeypot="bot-field"
+      action="/?thanks=true"
       onsubmit="return submitWaitlist(event)"
     >
       <!-- Netlify glue -->
@@ -518,7 +519,7 @@
       </div>
 
       <!-- Netlify-enabled contact form -->
-      <form class="card rounded-xl p-6 fade-up" data-io name="contact" method="POST" netlify>
+      <form class="card rounded-xl p-6 fade-up" data-io name="contact" method="POST" data-netlify="true" action="/?contact=thanks">
         <input type="hidden" name="form-name" value="contact" />
         <h2 class="text-2xl md:text-3xl font-bold mb-2">Contact</h2>
         <div class="grid gap-4">
