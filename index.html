@@ -371,21 +371,136 @@
     </div>
   </section>
 
-  <!-- Waitlist (Netlify form) -->
-  <section id="waitlist" class="mx-auto max-w-7xl px-4 pb-6">
-    <div class="card rounded-2xl p-6 md:p-8 fade-up" data-io>
-      <h2 class="text-2xl md:text-3xl font-bold mb-2">Join the Waitlist</h2>
-      <p class="text-white/70 mb-4">Be first to get access when we open the gates.</p>
-      <form name="waitlist" method="POST" data-netlify="true" class="grid sm:grid-cols-3 gap-3"
-            netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="waitlist" />
-        <p class="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
-        <input class="rounded-md bg-white/5 border border-white/10 px-3 py-2" name="name" placeholder="Your name" required />
-        <input class="rounded-md bg-white/5 border border-white/10 px-3 py-2" name="email" type="email" placeholder="Email" required />
-        <button class="rounded-md bg-brand-600 hover:bg-brand-500 px-4 py-2 font-semibold">Notify Me</button>
-      </form>
-      <p class="text-xs text-white/40 mt-3">We won’t spam you. Unsubscribe anytime.</p>
+  <!-- Waitlist (Premium Netlify Form) -->
+  <section id="waitlist" class="mx-auto max-w-3xl px-4 py-16">
+    <div class="mb-8 fade-up" data-io>
+      <h2 class="text-2xl md:text-3xl font-bold">Join the MotorSphere Waitlist</h2>
+      <p class="text-white/70">Early access rolls out by city and device. Be first to know.</p>
     </div>
+
+    <!-- Success message -->
+    <div id="waitlist-success" class="hidden card rounded-xl p-6">
+      <h3 class="text-xl font-semibold">You’re on the list 🚀</h3>
+      <p class="text-white/70 mt-2">
+        Thanks for joining MotorSphere. We’ll roll out access in waves by city and device.
+        Want faster access? Share this page and tag <b>@MotorSphere</b>.
+      </p>
+    </div>
+
+    <form
+      id="waitlist-form"
+      class="card rounded-xl p-6 grid gap-4"
+      name="waitlist"
+      method="POST"
+      netlify
+      netlify-honeypot="bot-field"
+      onsubmit="return submitWaitlist(event)"
+    >
+      <!-- Netlify glue -->
+      <input type="hidden" name="form-name" value="waitlist" />
+      <p class="hidden">
+        <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <label class="grid gap-2">
+          <span class="text-sm text-white/80">Your name</span>
+          <input name="name" required placeholder="Alex Rivera"
+                 class="rounded-md bg-white/5 border border-white/10 px-3 py-2" />
+        </label>
+
+        <label class="grid gap-2">
+          <span class="text-sm text-white/80">Email</span>
+          <input name="email" type="email" required placeholder="alex@email.com"
+                 class="rounded-md bg-white/5 border border-white/10 px-3 py-2" />
+        </label>
+      </div>
+
+      <label class="grid gap-2">
+        <span class="text-sm text-white/80">Where are you based?</span>
+        <input name="city" placeholder="Houston, TX"
+               class="rounded-md bg-white/5 border border-white/10 px-3 py-2" />
+      </label>
+
+      <label class="grid gap-2">
+        <span class="text-sm text-white/80">What describes you best?</span>
+        <select name="persona" required class="rounded-md bg-white/5 border border-white/10 px-3 py-2">
+          <option value="" disabled selected>Select one</option>
+          <option>Daily driver / enthusiast</option>
+          <option>Builder / tuner / fabricator</option>
+          <option>Event organizer / club lead</option>
+          <option>Shop / brand / creator</option>
+          <option>Collector / investor</option>
+        </select>
+      </label>
+
+      <fieldset class="grid gap-2">
+        <legend class="text-sm text-white/80">Primary interest</legend>
+        <div class="grid sm:grid-cols-2 gap-2">
+          <label class="flex items-center gap-2"><input type="checkbox" name="interests" value="JDM / Imports" class="accent-brand-500"><span class="text-sm">JDM / Imports</span></label>
+          <label class="flex items-center gap-2"><input type="checkbox" name="interests" value="Euro" class="accent-brand-500"><span class="text-sm">Euro</span></label>
+          <label class="flex items-center gap-2"><input type="checkbox" name="interests" value="Domestic / Muscle" class="accent-brand-500"><span class="text-sm">Domestic / Muscle</span></label>
+          <label class="flex items-center gap-2"><input type="checkbox" name="interests" value="Trucks / Off-road" class="accent-brand-500"><span class="text-sm">Trucks / Off-road</span></label>
+          <label class="flex items-center gap-2"><input type="checkbox" name="interests" value="Bikes / Powersports" class="accent-brand-500"><span class="text-sm">Bikes / Powersports</span></label>
+          <label class="flex items-center gap-2"><input type="checkbox" name="interests" value="Marine" class="accent-brand-500"><span class="text-sm">Marine</span></label>
+          <label class="flex items-center gap-2"><input type="checkbox" name="interests" value="Electric / Hybrid" class="accent-brand-500"><span class="text-sm">Electric / Hybrid</span></label>
+          <label class="flex items-center gap-2"><input type="checkbox" name="interests" value="Track / Time Attack / Drift" class="accent-brand-500"><span class="text-sm">Track / Time Attack / Drift</span></label>
+        </div>
+      </fieldset>
+
+      <label class="grid gap-2">
+        <span class="text-sm text-white/80">iOS or Android?</span>
+        <select name="platform" required class="rounded-md bg-white/5 border border-white/10 px-3 py-2">
+          <option value="" disabled selected>Select one</option>
+          <option>iOS (TestFlight)</option>
+          <option>Android (beta)</option>
+          <option>Both</option>
+        </select>
+      </label>
+
+      <fieldset class="grid gap-2">
+        <legend class="text-sm text-white/80">How do you want to use MotorSphere first?</legend>
+        <div class="grid sm:grid-cols-2 gap-2">
+          <label class="flex items-center gap-2"><input type="checkbox" name="uses" value="Discover meets near me" class="accent-brand-500"><span class="text-sm">Discover meets near me</span></label>
+          <label class="flex items-center gap-2"><input type="checkbox" name="uses" value="Post reels / grow audience" class="accent-brand-500"><span class="text-sm">Post reels / grow audience</span></label>
+          <label class="flex items-center gap-2"><input type="checkbox" name="uses" value="Organize events" class="accent-brand-500"><span class="text-sm">Organize events</span></label>
+          <label class="flex items-center gap-2"><input type="checkbox" name="uses" value="Buy / sell cars & parts" class="accent-brand-500"><span class="text-sm">Buy / sell cars & parts</span></label>
+          <label class="flex items-center gap-2"><input type="checkbox" name="uses" value="Showcase my builds (Garage)" class="accent-brand-500"><span class="text-sm">Showcase my builds (Garage)</span></label>
+        </div>
+      </fieldset>
+
+      <label class="grid gap-2">
+        <span class="text-sm text-white/80">Your social @ (optional)</span>
+        <input name="social" placeholder="@yourhandle" class="rounded-md bg-white/5 border border-white/10 px-3 py-2" />
+      </label>
+
+      <div id="invite-code-wrap" class="hidden">
+        <label class="grid gap-2">
+          <span class="text-sm text-white/80">Invite code (optional)</span>
+          <input name="invite_code" placeholder="If you were referred, drop it here"
+                 class="rounded-md bg-white/5 border border-white/10 px-3 py-2" />
+        </label>
+      </div>
+
+      <!-- Consent -->
+      <label class="flex items-start gap-2">
+        <input type="checkbox" name="consent" required class="mt-1 accent-brand-500">
+        <span class="text-xs text-white/70">I agree to receive emails about early access, updates, and events. I can unsubscribe anytime.</span>
+      </label>
+
+      <!-- Optional: Netlify reCAPTCHA (enable in Netlify first) -->
+      <!-- <div data-netlify-recaptcha="true"></div> -->
+
+      <button class="rounded-md bg-brand-600 hover:bg-brand-500 px-4 py-2 font-semibold" type="submit">
+        Request Early Access
+      </button>
+
+      <!-- Hidden UTM fields (auto-populated by JS) -->
+      <input type="hidden" name="utm_source" />
+      <input type="hidden" name="utm_medium" />
+      <input type="hidden" name="utm_campaign" />
+      <input type="hidden" name="ref" />
+    </form>
   </section>
 
   <!-- Contact -->
@@ -403,7 +518,7 @@
       </div>
 
       <!-- Netlify-enabled contact form -->
-      <form class="card rounded-xl p-6 fade-up" data-io name="contact" method="POST" data-netlify="true">
+      <form class="card rounded-xl p-6 fade-up" data-io name="contact" method="POST" netlify>
         <input type="hidden" name="form-name" value="contact" />
         <h2 class="text-2xl md:text-3xl font-bold mb-2">Contact</h2>
         <div class="grid gap-4">
@@ -447,7 +562,50 @@
       requestAnimationFrame(step);
     });
 
-    // Toast on waitlist click
+    // Show invite code field for certain personas
+    const persona = document.querySelector('select[name="persona"]');
+    const inviteWrap = document.getElementById('invite-code-wrap');
+    if (persona) {
+      persona.addEventListener('change', () => {
+        const v = persona.value || '';
+        if (/(organizer|club|Shop|brand|creator|Collector|investor)/i.test(v)) {
+          inviteWrap.classList.remove('hidden');
+        } else {
+          inviteWrap.classList.add('hidden');
+        }
+      });
+    }
+
+    // Capture UTM params into hidden fields
+    const params = new URLSearchParams(location.search);
+    ['utm_source','utm_medium','utm_campaign','ref'].forEach(k=>{
+      const el = document.querySelector(`input[name="${k}"]`);
+      if (el && params.get(k)) el.value = params.get(k);
+    });
+
+    // Netlify-friendly AJAX submit (prevents page reload)
+    async function submitWaitlist(e){
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      try {
+        await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(data).toString()
+        });
+        form.classList.add('hidden');
+        document.getElementById('waitlist-success').classList.remove('hidden');
+        const t = document.getElementById('toast');
+        t?.classList.remove('hidden');
+        setTimeout(()=>t?.classList.add('hidden'), 3000);
+      } catch(err){
+        alert('Submission failed. Please try again or email elowell314@icloud.com');
+      }
+      return false;
+    }
+
+    // Toast on waitlist button clicks
     function showToast(){
       const t = document.getElementById('toast');
       t.classList.remove('hidden');
