@@ -35,7 +35,7 @@
   </script>
 
   <!-- Preload key asset -->
-  <link rel="preload" as="image" href="logo.png" />
+  <link rel="preload" as="image" href="/logo.png" />
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -66,14 +66,37 @@
   </script>
 
   <!-- Favicon -->
-  <link rel="icon" href="logo.png" type="image/png" />
+  <link rel="icon" href="/logo.png" type="image/png" />
 
   <style>
     :root { --bg:#0b0b0e; }
     body { background: var(--bg); color:#eaeaea; }
     .card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); }
     .glass { background: rgba(124,58,237,.08); border: 1px solid rgba(124,58,237,.25); }
-    .gradient-text { background: linear-gradient(90deg,#fff,#a78bfa 60%,#7C3AED); -webkit-background-clip:text; background-clip:text; color:transparent; }
+
+    /* Gradient text with safe fallback */
+    .gradient-text {
+      /* Fallback for browsers that don't support background-clip:text */
+      color: #ffffff;
+      background-image: linear-gradient(90deg,#ffffff 0%,#a78bfa 60%,#7C3AED 100%);
+    }
+    @supports (-webkit-background-clip:text) {
+      .gradient-text {
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+      }
+    }
+    @supports (background-clip:text) {
+      .gradient-text {
+        background-clip: text;
+        color: transparent;
+        display: inline-block;
+      }
+    }
+
     .fade-up { opacity:0; transform: translateY(16px); transition:.8s ease; }
     .fade-up.in { opacity:1; transform:none; }
     html { scroll-behavior:smooth; }
@@ -92,8 +115,9 @@
     <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
       <a href="#" class="flex items-center gap-3">
         <img
-          src="logo.png"
+          src="/logo.png"
           alt="MotorSphere logo"
+          width="32" height="32" decoding="async" fetchpriority="high"
           class="h-8 w-8 rounded-full object-contain ring-1 ring-white/10"
           onerror="this.outerHTML=`<svg width='32' height='32' viewBox='0 0 64 64' class='ring-1 ring-white/10 rounded-full'><defs><linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='#a78bfa'/><stop offset='1' stop-color='#7C3AED'/></linearGradient></defs><circle cx='32' cy='32' r='30' fill='url(#g)' opacity='.25'></circle><path d='M10 36c10-12 34-12 44 0M12 28c8-10 32-10 40 0' stroke='url(#g)' stroke-width='3' fill='none' stroke-linecap='round'/><circle cx='24' cy='44' r='4' fill='#fff'/><circle cx='40' cy='44' r='4' fill='#fff'/></svg>`;"
         />
@@ -140,10 +164,10 @@
         <div class="relative card rounded-3xl p-6 shadow-glow">
           <div class="flex items-center justify-between mb-4">
             <div class="flex items-center gap-2">
-              <img src="logo.png" alt="" class="h-7 w-7 rounded-full object-contain ring-1 ring-white/10" onerror="this.style.display='none'">
+              <img src="/logo.png" alt="" class="h-7 w-7 rounded-full object-contain ring-1 ring-white/10" onerror="this.style.display='none'">
               <span class="text-sm text-white/80">MotorSphere Preview</span>
             </div>
-            <span class="text-[11px] text-white/50">Reels • Meets • Maps • Market</span>
+            <span class="text-[11px] text-white/50">Reels • Share • Meets • Maps • Market</span>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -179,11 +203,7 @@
                     <div class="h-2 w-2/3 bg-white/10 rounded"></div>
                   </div>
                 </div>
-<!-- Netlify form template to force detection -->
-<form name="waitlist" data-netlify="true" netlify-honeypot="bot-field" hidden>
-  <input type="text" name="name" />
-  <input type="email" name="email" />
-</form>                
+
                 <div class="rounded-xl border border-white/10 bg-white/[.06] p-3">
                   <div class="h-2.5 w-28 bg-white/20 rounded mb-2"></div>
                   <div class="h-2 bg-white/10 rounded mb-2 animate-pulsebar"></div>
@@ -198,11 +218,15 @@
               </div>
             </div>
 
-            <!-- Feature chips -->
+            <!-- Feature chips (now includes Share) -->
             <div class="grid gap-3 content-start">
               <div class="glass rounded-xl p-4">
                 <div class="text-sm font-semibold">Reels</div>
                 <div class="text-white/70 text-xs mt-1">Create, watch, grow.</div>
+              </div>
+              <div class="glass rounded-xl p-4">
+                <div class="text-sm font-semibold">Share</div>
+                <div class="text-white/70 text-xs mt-1">Build logs, parts, chapters.</div>
               </div>
               <div class="glass rounded-xl p-4">
                 <div class="text-sm font-semibold">Meets</div>
@@ -238,7 +262,7 @@
       </div>
       <div class="card rounded-xl p-6 text-center">
         <div class="text-3xl font-bold">All-in-one</div>
-        <div class="text-white/60 text-sm">Reels • <b>Share</b> • Meets • Maps • Market • Garage</div>
+        <div class="text-white/60 text-sm">Reels • Share • Meets • Maps • Market • Garage</div>
       </div>
       <div class="card rounded-xl p-6 text-center">
         <div class="text-3xl font-bold">Built for everyone</div>
@@ -375,7 +399,7 @@
     </div>
   </section>
 
-  <!-- Waitlist (Premium Netlify Form) -->
+  <!-- Waitlist (Netlify Form) -->
   <section id="waitlist" class="mx-auto max-w-3xl px-4 py-16">
     <div class="mb-8 fade-up" data-io>
       <h2 class="text-2xl md:text-3xl font-bold">Join the MotorSphere Waitlist</h2>
@@ -396,35 +420,29 @@
       class="card rounded-xl p-6 grid gap-4"
       name="waitlist"
       method="POST"
-      data-netlify="true"
+      netlify
       netlify-honeypot="bot-field"
-      action="/?thanks=true"
       onsubmit="return submitWaitlist(event)"
+      data-netlify="true"
+      data-netlify-notify="true"
     >
-      <!-- Netlify glue -->
       <input type="hidden" name="form-name" value="waitlist" />
-      <p class="hidden">
-        <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
-      </p>
+      <p class="hidden"><label>Don’t fill this out if you’re human: <input name="bot-field" /></label></p>
 
       <div class="grid md:grid-cols-2 gap-4">
         <label class="grid gap-2">
           <span class="text-sm text-white/80">Your name</span>
-          <input name="name" required placeholder="Alex Rivera"
-                 class="rounded-md bg-white/5 border border-white/10 px-3 py-2" />
+          <input name="name" required placeholder="Alex Rivera" class="rounded-md bg-white/5 border border-white/10 px-3 py-2" />
         </label>
-
         <label class="grid gap-2">
           <span class="text-sm text-white/80">Email</span>
-          <input name="email" type="email" required placeholder="alex@email.com"
-                 class="rounded-md bg-white/5 border border-white/10 px-3 py-2" />
+          <input name="email" type="email" required placeholder="alex@email.com" class="rounded-md bg-white/5 border border-white/10 px-3 py-2" />
         </label>
       </div>
 
       <label class="grid gap-2">
         <span class="text-sm text-white/80">Where are you based?</span>
-        <input name="city" placeholder="Houston, TX"
-               class="rounded-md bg-white/5 border border-white/10 px-3 py-2" />
+        <input name="city" placeholder="Houston, TX" class="rounded-md bg-white/5 border border-white/10 px-3 py-2" />
       </label>
 
       <label class="grid gap-2">
@@ -482,8 +500,7 @@
       <div id="invite-code-wrap" class="hidden">
         <label class="grid gap-2">
           <span class="text-sm text-white/80">Invite code (optional)</span>
-          <input name="invite_code" placeholder="If you were referred, drop it here"
-                 class="rounded-md bg-white/5 border border-white/10 px-3 py-2" />
+          <input name="invite_code" placeholder="If you were referred, drop it here" class="rounded-md bg-white/5 border border-white/10 px-3 py-2" />
         </label>
       </div>
 
@@ -500,7 +517,7 @@
         Request Early Access
       </button>
 
-      <!-- Hidden UTM fields (auto-populated by JS) -->
+      <!-- Hidden UTM fields -->
       <input type="hidden" name="utm_source" />
       <input type="hidden" name="utm_medium" />
       <input type="hidden" name="utm_campaign" />
@@ -523,7 +540,7 @@
       </div>
 
       <!-- Netlify-enabled contact form -->
-      <form class="card rounded-xl p-6 fade-up" data-io name="contact" method="POST" data-netlify="true" action="/?contact=thanks">
+      <form class="card rounded-xl p-6 fade-up" data-io name="contact" method="POST" netlify>
         <input type="hidden" name="form-name" value="contact" />
         <h2 class="text-2xl md:text-3xl font-bold mb-2">Contact</h2>
         <div class="grid gap-4">
@@ -588,7 +605,7 @@
       if (el && params.get(k)) el.value = params.get(k);
     });
 
-    // Netlify-friendly AJAX submit (prevents page reload)
+    // Netlify-friendly AJAX submit + notifications
     async function submitWaitlist(e){
       e.preventDefault();
       const form = e.target;
