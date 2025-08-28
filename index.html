@@ -46,16 +46,10 @@
           fontFamily: { display: ['Inter','system-ui','sans-serif'] },
           colors: {
             ink: '#0b0b0e',
-            /* Gold brand palette */
-            brand: {
-              400:'#F5D28C', /* light gold */
-              500:'#EAB308', /* vivid gold (tailwind amber-500) */
-              600:'#C58C00'  /* deep gold */
-            }
+            /* brand remapped to gold */
+            brand: { 400:'#F5D28C',500:'#EAB308',600:'#C58C00' }
           },
-          /* Subtle gold glow */
           boxShadow: { glow: '0 0 80px 10px rgba(234,179,8,.20)' },
-          /* Gold radial ring */
           backgroundImage: {
             ring: 'radial-gradient(800px 500px at 100% 0%, rgba(234,179,8,.25), rgba(234,179,8,0) 60%)'
           },
@@ -78,38 +72,42 @@
   <style>
     :root { --bg:#0b0b0e; }
     body { background: var(--bg); color:#eaeaea; }
-    .card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); }
-    /* Glass chips — gold tint */
+    .card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.10); }
+    /* glass chips — gold */
     .glass { background: rgba(234,179,8,.08); border: 1px solid rgba(234,179,8,.28); }
 
-    /* Gradient text (white -> gold) with safe fallbacks */
-    .gradient-text {
-      color: #ffffff; /* fallback for no background-clip support */
-      background-image: linear-gradient(90deg,#ffffff 0%,#F5D28C 60%,#EAB308 100%);
+    /* Headline gradient: white -> rich gold (with robust fallbacks) */
+    .gradient-text{
+      color:#fff;
+      background-image:linear-gradient(90deg,#ffffff 0%,#FFE8A3 45%,#F5D28C 65%,#EAB308 85%,#C58C00 100%);
     }
     @supports (-webkit-background-clip:text) {
-      .gradient-text {
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        -webkit-text-fill-color: transparent;
-        display: inline-block;
-      }
+      .gradient-text{ -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent; display:inline-block; }
     }
     @supports (background-clip:text) {
-      .gradient-text {
-        background-clip: text;
-        color: transparent;
-        display: inline-block;
-      }
+      .gradient-text{ background-clip:text; color:transparent; display:inline-block; }
     }
 
     .fade-up { opacity:0; transform: translateY(16px); transition:.8s ease; }
     .fade-up.in { opacity:1; transform:none; }
     html { scroll-behavior:smooth; }
     img { color: transparent; }
-    .toast { position: fixed; right: 14px; bottom: 14px; background: rgba(20,20,28,.92); border:1px solid rgba(255,255,255,.12); color:#fff; padding:.75rem 1rem; border-radius:.75rem; box-shadow: 0 10px 30px rgba(0,0,0,.35); z-index: 60; }
+    .toast { position: fixed; right: 14px; bottom: 14px; background: rgba(20,20,28,.9); border:1px solid rgba(255,255,255,.12); color:#fff; padding:.75rem 1rem; border-radius:.75rem; box-shadow: 0 10px 30px rgba(0,0,0,.35); z-index: 60; }
     .hidden { display: none; }
+  </style>
+
+  <!-- GOLD OVERRIDE HOTFIX (ensures any cached purple utilities are replaced) -->
+  <style id="ms-gold-hotfix">
+    .bg-brand-400{ background-color:#F5D28C !important; }
+    .bg-brand-400\/20{ background-color:rgba(245,210,140,.20) !important; }
+    .text-brand-400{ color:#F5D28C !important; }
+    .bg-brand-500{ background-color:#EAB308 !important; }
+    .bg-brand-500\/30{ background-color:rgba(234,179,8,.30) !important; }
+    .hover\:bg-brand-500:hover{ background-color:#EAB308 !important; }
+    .bg-brand-600{ background-color:#C58C00 !important; }
+    .hover\:bg-brand-600:hover{ background-color:#C58C00 !important; }
+    .shadow-glow{ box-shadow:0 0 80px 10px rgba(234,179,8,.20) !important; }
+    .bg-ring{ background-image:radial-gradient(800px 500px at 100% 0%, rgba(234,179,8,.25), rgba(234,179,8,0) 60%) !important; }
   </style>
 </head>
 
@@ -145,9 +143,7 @@
 
   <!-- Hero -->
   <section class="relative overflow-hidden">
-    <!-- Gold ambient blur -->
     <div class="absolute -top-24 -right-24 w-[520px] h-[520px] rounded-full bg-brand-500/30 blur-3xl"></div>
-
     <div class="mx-auto max-w-7xl px-4 py-16 md:py-24 grid md:grid-cols-2 items-center gap-10">
       <div class="fade-up" data-io>
         <div class="inline-flex items-center gap-2 text-[11px] uppercase tracking-widest text-white/60 mb-3">
@@ -227,7 +223,7 @@
               </div>
             </div>
 
-            <!-- Feature chips (gold glass) -->
+            <!-- Feature chips (includes Share) -->
             <div class="grid gap-3 content-start">
               <div class="glass rounded-xl p-4">
                 <div class="text-sm font-semibold">Reels</div>
@@ -519,7 +515,7 @@
         <span class="text-xs text-white/70">I agree to receive emails about early access, updates, and events. I can unsubscribe anytime.</span>
       </label>
 
-      <!-- Optional: Netlify reCAPTCHA (enable in Netlify first) -->
+      <!-- Optional: Netlify reCAPTCHA -->
       <!-- <div data-netlify-recaptcha="true"></div> -->
 
       <button class="rounded-md bg-brand-600 hover:bg-brand-500 px-4 py-2 font-semibold" type="submit">
