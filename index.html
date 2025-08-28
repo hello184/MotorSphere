@@ -46,14 +46,18 @@
           fontFamily: { display: ['Inter','system-ui','sans-serif'] },
           colors: {
             ink: '#0b0b0e',
-            /* GOLD palette replaces purple */
-            brand: { 400:'#FFD966', 500:'#FFB800', 600:'#E6A700' }
+            /* Gold brand palette */
+            brand: {
+              400:'#F5D28C', /* light gold */
+              500:'#EAB308', /* vivid gold (tailwind amber-500) */
+              600:'#C58C00'  /* deep gold */
+            }
           },
-          /* Gold glow */
-          boxShadow: { glow: '0 0 80px 10px rgba(255,184,0,.25)' },
+          /* Subtle gold glow */
+          boxShadow: { glow: '0 0 80px 10px rgba(234,179,8,.20)' },
+          /* Gold radial ring */
           backgroundImage: {
-            /* Gold ring */
-            ring: 'radial-gradient(800px 500px at 100% 0%, rgba(255,184,0,.28), rgba(255,184,0,0) 60%)'
+            ring: 'radial-gradient(800px 500px at 100% 0%, rgba(234,179,8,.25), rgba(234,179,8,0) 60%)'
           },
           keyframes: {
             floaty: { '0%,100%':{transform:'translateY(0)'}, '50%':{transform:'translateY(-6px)'} },
@@ -75,14 +79,13 @@
     :root { --bg:#0b0b0e; }
     body { background: var(--bg); color:#eaeaea; }
     .card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); }
-    /* Glass now gold-tinted */
-    .glass { background: rgba(255,184,0,.08); border: 1px solid rgba(255,184,0,.25); }
+    /* Glass chips — gold tint */
+    .glass { background: rgba(234,179,8,.08); border: 1px solid rgba(234,179,8,.28); }
 
-    /* Gradient text: white → gold */
+    /* Gradient text (white -> gold) with safe fallbacks */
     .gradient-text {
-      /* Fallback for browsers that don't support background-clip:text */
-      color: #ffffff;
-      background-image: linear-gradient(90deg,#ffffff 0%,#FFD966 60%,#FFB800 100%);
+      color: #ffffff; /* fallback for no background-clip support */
+      background-image: linear-gradient(90deg,#ffffff 0%,#F5D28C 60%,#EAB308 100%);
     }
     @supports (-webkit-background-clip:text) {
       .gradient-text {
@@ -105,7 +108,7 @@
     .fade-up.in { opacity:1; transform:none; }
     html { scroll-behavior:smooth; }
     img { color: transparent; }
-    .toast { position: fixed; right: 14px; bottom: 14px; background: rgba(20,20,28,.9); border:1px solid rgba(255,255,255,.12); color:#fff; padding:.75rem 1rem; border-radius:.75rem; box-shadow: 0 10px 30px rgba(0,0,0,.35); z-index: 60; }
+    .toast { position: fixed; right: 14px; bottom: 14px; background: rgba(20,20,28,.92); border:1px solid rgba(255,255,255,.12); color:#fff; padding:.75rem 1rem; border-radius:.75rem; box-shadow: 0 10px 30px rgba(0,0,0,.35); z-index: 60; }
     .hidden { display: none; }
   </style>
 </head>
@@ -123,7 +126,7 @@
           alt="MotorSphere logo"
           width="32" height="32" decoding="async" fetchpriority="high"
           class="h-8 w-8 rounded-full object-contain ring-1 ring-white/10"
-          onerror="this.outerHTML=`<svg width='32' height='32' viewBox='0 0 64 64' class='ring-1 ring-white/10 rounded-full'><defs><linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='#FFD966'/><stop offset='1' stop-color='#FFB800'/></linearGradient></defs><circle cx='32' cy='32' r='30' fill='url(#g)' opacity='.25'></circle><path d='M10 36c10-12 34-12 44 0M12 28c8-10 32-10 40 0' stroke='url(#g)' stroke-width='3' fill='none' stroke-linecap='round'/><circle cx='24' cy='44' r='4' fill='#fff'/><circle cx='40' cy='44' r='4' fill='#fff'/></svg>`;"
+          onerror="this.outerHTML=`<svg width='32' height='32' viewBox='0 0 64 64' class='ring-1 ring-white/10 rounded-full'><defs><linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='#F5D28C'/><stop offset='1' stop-color='#EAB308'/></linearGradient></defs><circle cx='32' cy='32' r='30' fill='url(#g)' opacity='.25'></circle><path d='M10 36c10-12 34-12 44 0M12 28c8-10 32-10 40 0' stroke='url(#g)' stroke-width='3' fill='none' stroke-linecap='round'/><circle cx='24' cy='44' r='4' fill='#fff'/><circle cx='40' cy='44' r='4' fill='#fff'/></svg>`;"
         />
         <span class="font-semibold tracking-wide">MotorSphere</span>
       </a>
@@ -142,7 +145,9 @@
 
   <!-- Hero -->
   <section class="relative overflow-hidden">
+    <!-- Gold ambient blur -->
     <div class="absolute -top-24 -right-24 w-[520px] h-[520px] rounded-full bg-brand-500/30 blur-3xl"></div>
+
     <div class="mx-auto max-w-7xl px-4 py-16 md:py-24 grid md:grid-cols-2 items-center gap-10">
       <div class="fade-up" data-io>
         <div class="inline-flex items-center gap-2 text-[11px] uppercase tracking-widest text-white/60 mb-3">
@@ -222,7 +227,7 @@
               </div>
             </div>
 
-            <!-- Feature chips (now includes Share) -->
+            <!-- Feature chips (gold glass) -->
             <div class="grid gap-3 content-start">
               <div class="glass rounded-xl p-4">
                 <div class="text-sm font-semibold">Reels</div>
