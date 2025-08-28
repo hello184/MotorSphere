@@ -30,12 +30,12 @@
     "@type":"Organization",
     "name":"MotorSphere",
     "url":"https://motorsphere.app/",
-    "logo":"https://motorsphere.app/logo.png"
+    "logo":"https://motorsphere.app/logo.png?v=11"
   }
   </script>
 
   <!-- Preload key asset -->
-  <link rel="preload" as="image" href="logo.png?v=3" />
+  <link rel="preload" as="image" href="/logo.png?v=11" />
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -69,7 +69,7 @@
   </script>
 
   <!-- Favicon -->
-  <link rel="icon" href="logo.png?v=3" type="image/png" />
+  <link rel="icon" href="/logo.png?v=11" type="image/png" />
 
   <style>
     :root { --bg:#0b0b0e; }
@@ -106,13 +106,17 @@
   <header class="sticky top-0 z-50 backdrop-blur bg-black/40 border-b border-white/10">
     <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
       <a href="#" class="flex items-center gap-3">
-        <img
-          src="logo.png?v=3"
-          alt="MotorSphere logo"
-          width="32" height="32" decoding="async" fetchpriority="high"
-          class="h-8 w-8 rounded-full object-contain ring-1 ring-white/10"
-          onerror="this.outerHTML=`<svg width='32' height='32' viewBox='0 0 64 64' class='ring-1 ring-white/10 rounded-full' aria-label='MotorSphere logo fallback'><defs><linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='#ffffff'/><stop offset='1' stop-color='#d4af37'/></linearGradient></defs><circle cx='32' cy='32' r='30' fill='url(#g)' opacity='.15'></circle><path d='M10 36c10-12 34-12 44 0M12 28c8-10 32-10 40 0' stroke='#d4af37' stroke-width='3' fill='none' stroke-linecap='round'/><circle cx='24' cy='44' r='4' fill='#fff'/><circle cx='40' cy='44' r='4' fill='#fff'/></svg>`;"
-        />
+        <picture>
+          <source srcset="/logo.png?v=11" type="image/png" />
+          <img
+            data-logo
+            src="/logo.png?v=11"
+            alt="MotorSphere logo"
+            width="32" height="32" decoding="async" fetchpriority="high"
+            class="h-8 w-8 rounded-full object-contain ring-1 ring-white/10"
+            onerror="this.outerHTML=`<svg width='32' height='32' viewBox='0 0 64 64' class='ring-1 ring-white/10 rounded-full' aria-label='MotorSphere logo fallback'><defs><linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='#ffffff'/><stop offset='1' stop-color='#d4af37'/></linearGradient></defs><circle cx='32' cy='32' r='30' fill='url(#g)' opacity='.15'></circle><path d='M10 36c10-12 34-12 44 0M12 28c8-10 32-10 40 0' stroke='#d4af37' stroke-width='3' fill='none' stroke-linecap='round'/><circle cx='24' cy='44' r='4' fill='#fff'/><circle cx='40' cy='44' r='4' fill='#fff'/></svg>`;"
+          />
+        </picture>
         <span class="font-semibold tracking-wide">MotorSphere</span>
       </a>
       <nav class="hidden md:flex items-center gap-6 text-sm text-white/80">
@@ -156,7 +160,10 @@
         <div class="relative card rounded-3xl p-6 shadow-glow">
           <div class="flex items-center justify-between mb-4">
             <div class="flex items-center gap-2">
-              <img src="logo.png?v=3" alt="" class="h-7 w-7 rounded-full object-contain ring-1 ring-white/10" onerror="this.style.display='none'">
+              <picture>
+                <source srcset="/logo.png?v=11" type="image/png" />
+                <img data-logo src="/logo.png?v=11" alt="" class="h-7 w-7 rounded-full object-contain ring-1 ring-white/10" onerror="this.style.display='none'">
+              </picture>
               <span class="text-sm text-white/80">MotorSphere Preview</span>
             </div>
             <span class="text-[11px] text-white/60">Reels • Share • Meets • Maps • Market</span>
@@ -553,7 +560,7 @@
   <!-- Toast -->
   <div id="toast" class="toast hidden">Thanks! You’re on the list.</div>
 
-  <!-- Micro-interactions -->
+  <!-- Micro-interactions + logo resiliency -->
   <script>
     // Year
     document.getElementById('y').textContent = new Date().getFullYear();
@@ -627,6 +634,32 @@
     }
     document.getElementById('nav-waitlist')?.addEventListener('click', showToast);
     document.getElementById('hero-waitlist')?.addEventListener('click', showToast);
+
+    // Extra resiliency for logo loading (handles odd browser cache/corruption cases)
+    (function ensureLogoLoads(){
+      const logoUrl = '/logo.png?v=11';
+      const probe = new Image();
+      probe.onload = function(){ /* good */ };
+      probe.onerror = function(){
+        document.querySelectorAll('img[data-logo]').forEach(img=>{
+          img.outerHTML = `
+            <svg width="32" height="32" viewBox="0 0 64 64" class="ring-1 ring-white/10 rounded-full" aria-label="MotorSphere logo fallback">
+              <defs>
+                <linearGradient id="g" x1="0" x2="1">
+                  <stop offset="0" stop-color="#ffffff"/>
+                  <stop offset="1" stop-color="#d4af37"/>
+                </linearGradient>
+              </defs>
+              <circle cx="32" cy="32" r="30" fill="url(#g)" opacity=".15"></circle>
+              <path d="M10 36c10-12 34-12 44 0M12 28c8-10 32-10 40 0" stroke="#d4af37" stroke-width="3" fill="none" stroke-linecap="round"></path>
+              <circle cx="24" cy="44" r="4" fill="#fff"></circle>
+              <circle cx="40" cy="44" r="4" fill="#fff"></circle>
+            </svg>`;
+        });
+      };
+      // Force a fresh fetch in stubborn caches (Opera GX etc.)
+      probe.src = logoUrl + (logoUrl.includes('?') ? '&' : '?') + 'cb=' + Date.now();
+    })();
   </script>
 </body>
 </html>
