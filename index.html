@@ -46,11 +46,14 @@
           fontFamily: { display: ['Inter','system-ui','sans-serif'] },
           colors: {
             ink: '#0b0b0e',
-            brand: { 400:'#9A70FF',500:'#7C3AED',600:'#6B29D3' }
+            /* GOLD palette replaces purple */
+            brand: { 400:'#FFD966', 500:'#FFB800', 600:'#E6A700' }
           },
-          boxShadow: { glow: '0 0 80px 10px rgba(124,58,237,.25)' },
+          /* Gold glow */
+          boxShadow: { glow: '0 0 80px 10px rgba(255,184,0,.25)' },
           backgroundImage: {
-            ring: 'radial-gradient(800px 500px at 100% 0%, rgba(124,58,237,.28), rgba(124,58,237,0) 60%)'
+            /* Gold ring */
+            ring: 'radial-gradient(800px 500px at 100% 0%, rgba(255,184,0,.28), rgba(255,184,0,0) 60%)'
           },
           keyframes: {
             floaty: { '0%,100%':{transform:'translateY(0)'}, '50%':{transform:'translateY(-6px)'} },
@@ -72,13 +75,14 @@
     :root { --bg:#0b0b0e; }
     body { background: var(--bg); color:#eaeaea; }
     .card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); }
-    .glass { background: rgba(124,58,237,.08); border: 1px solid rgba(124,58,237,.25); }
+    /* Glass now gold-tinted */
+    .glass { background: rgba(255,184,0,.08); border: 1px solid rgba(255,184,0,.25); }
 
-    /* Gradient text with safe fallback */
+    /* Gradient text: white → gold */
     .gradient-text {
       /* Fallback for browsers that don't support background-clip:text */
       color: #ffffff;
-      background-image: linear-gradient(90deg,#ffffff 0%,#a78bfa 60%,#7C3AED 100%);
+      background-image: linear-gradient(90deg,#ffffff 0%,#FFD966 60%,#FFB800 100%);
     }
     @supports (-webkit-background-clip:text) {
       .gradient-text {
@@ -119,7 +123,7 @@
           alt="MotorSphere logo"
           width="32" height="32" decoding="async" fetchpriority="high"
           class="h-8 w-8 rounded-full object-contain ring-1 ring-white/10"
-          onerror="this.outerHTML=`<svg width='32' height='32' viewBox='0 0 64 64' class='ring-1 ring-white/10 rounded-full'><defs><linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='#a78bfa'/><stop offset='1' stop-color='#7C3AED'/></linearGradient></defs><circle cx='32' cy='32' r='30' fill='url(#g)' opacity='.25'></circle><path d='M10 36c10-12 34-12 44 0M12 28c8-10 32-10 40 0' stroke='url(#g)' stroke-width='3' fill='none' stroke-linecap='round'/><circle cx='24' cy='44' r='4' fill='#fff'/><circle cx='40' cy='44' r='4' fill='#fff'/></svg>`;"
+          onerror="this.outerHTML=`<svg width='32' height='32' viewBox='0 0 64 64' class='ring-1 ring-white/10 rounded-full'><defs><linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='#FFD966'/><stop offset='1' stop-color='#FFB800'/></linearGradient></defs><circle cx='32' cy='32' r='30' fill='url(#g)' opacity='.25'></circle><path d='M10 36c10-12 34-12 44 0M12 28c8-10 32-10 40 0' stroke='url(#g)' stroke-width='3' fill='none' stroke-linecap='round'/><circle cx='24' cy='44' r='4' fill='#fff'/><circle cx='40' cy='44' r='4' fill='#fff'/></svg>`;"
         />
         <span class="font-semibold tracking-wide">MotorSphere</span>
       </a>
